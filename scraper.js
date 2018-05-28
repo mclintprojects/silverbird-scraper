@@ -26,16 +26,17 @@ async function getMovieDetails(movie){
       
       let details = {};
       
+      //details.synopsis = $('.entry-content').children('p').slice(0, 1).text();
       let infolist = $('.info-list').children('li');
       details.director = infolist.slice(1, 2).children('span').text();
       
       details.cast = []
-      infolist.slice(0, 1).children('span').children('a').each(function(index, element){
+      infolist.first().children('span').children('a').each(function(index, element){
         details.cast.push(element.children[0].data);
       });
       
-      details.cinema = []
-      infolist.slice(5, 5).children('span').children('a').each(function(index, element){
+      details.cinemas = []
+      infolist.last().children('a').each(function(index, element){
         details.cinema.push(element.children[0].data);
       });
       
@@ -92,7 +93,7 @@ async function scrapeMovies() {
             movie.showtime = `${content.children('.cinema_page_showtime').children('span').children('strong').text()}${content.children('.cinema_page_showtime').children('strong').text()}`;
 
             let description = content.children('.desc-mv');
-            movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
+            movie.release = description.children('div').first().text().replace('Release:', '');
 
             movie.genres = [];
             description.children('.note').children('a').each(function(index, element) {
