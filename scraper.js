@@ -26,12 +26,17 @@ async function getMovieDetails(movie){
       
       let details = {};
       
-      let infolis
-      details.director = 
+      let infolist = $('.info-list').children('li');
+      details.director = infolist.slice(1, 1).children('span').children('a').text();
       
       details.cast = []
       infolist.slice(0, 1).children('span').children('a').each(function(index, element){
         details.cast.push(element.children[0].data);
+      });
+      
+      details.cinema = []
+      infolist.slice(5, 1).children('span').children('a').each(function(index, element){
+        details.cinema.push(element.children[0].data);
       });
       
       resolve(details);
