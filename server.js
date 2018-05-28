@@ -28,6 +28,13 @@ app.get('/movies', async function(req, response){
       let description = content.children('.desc-mv');
       movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
       
+      movie.genres = [];
+      let genres = description.children('.note');
+      for(genre in genre
+      .each(function(i, elem){
+        movie.genres.push(elem.text());
+      });
+      
       movies.push(movie)
     });
     
