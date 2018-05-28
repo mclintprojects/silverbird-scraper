@@ -39,6 +39,13 @@ export default {
 	border-radius: 16px;
 	background: white;
 	width: calc(100% - 48px);
+	transition: all 1.5s;
+}
+
+.movie:hover {
+	background: rgb(161, 161, 161);
+	filter: grayscale(100%);
+	cursor: pointer;
 }
 
 .thumbnail {
