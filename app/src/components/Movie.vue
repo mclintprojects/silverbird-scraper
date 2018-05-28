@@ -17,6 +17,7 @@
                 <img class="icon" src="https://res.cloudinary.com/mclint-cdn/image/upload/v1527549057/twotone-timelapse-24px.svg" />
                 <p class="movie-showtime text-secondary">{{movie.length}}</p>
             </div>
+            <div class="flex-row"><p class=movie-rating>Rating: {{movie.rating.length === 0 ? '0.0' : movie.rating}} <span  class="text-secondary"> / 5</span></p></div>
         </div>
     </div>
 </template>
@@ -76,7 +77,12 @@ export default {
 	margin-left: 8px;
 }
 
-@media screen and (max-width: 576px), (min-width: 768px) {
+.movie-rating {
+	font-style: bold;
+	margin-top: 32px;
+}
+
+@media screen and (max-width: 576px) {
 	.movie-title {
 		font-size: 18px;
 	}

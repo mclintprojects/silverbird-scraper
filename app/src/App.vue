@@ -17,10 +17,10 @@ export default {
 }
 
 #app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	font-family: 'Rubik', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	width: 40%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 24px;
 	color: rgba(0, 0, 0, 0.8);
@@ -56,12 +56,6 @@ body {
 	#app {
 		width: 100%;
 		padding: 16px;
-	}
-}
-
-@media screen and (min-width: 768px) {
-	#app {
-		width: 60%;
 	}
 }
 </style>
