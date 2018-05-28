@@ -2,7 +2,9 @@ var express = require('express');
 var cors = require('cors')
 var app = express();
 var scraper = require('./scraper')
-app.use(cors())
+
+// Middleware
+app.use(cors()); // CORS middleware
 
 app.get('/movies', async function(request, response) {
     let getMoviesResponse = await scraper.getMovies();
@@ -17,15 +19,19 @@ app.get('/movies', async function(request, response) {
     }
 });
 
-app.get('/movies/:id', async function(request, response){
-  let id = request.params.id;
-  
-  let movie = await scraper.getMovie(id);
-  if(movie != null){
-    response.send({movie});
-  }else{
-    response.status(404).send({error: `Could not find a movie with ID: ${id}`});
-  }
+app.get('/movies/:id', async function(request, response) {
+    let id = request.params.id;
+
+    let movie = await scraper.getMovie(id);
+    if (movie != null) {
+        response.send({
+            movie
+        });
+    } else {
+        response.status(404).send({
+            error: `Could not find a movie with ID: ${id}`
+        });
+    }
 });
 
 var listener = app.listen(process.env.PORT, function() {
