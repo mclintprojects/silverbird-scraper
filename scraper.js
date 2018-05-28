@@ -7,19 +7,32 @@ async function getMovie(id){
   let response = await getMovies();
   if(response.success){
     let movie = response.movies[id - 1];
-    if(movie.details){
-      return movie.details;
-    }else{
+    if(!movie.details){
       let details = await getMovieDetails(movie.url);
       movie.details = details;
-      return details;
     }
+    
+    return movie;
   }else{
     return null;
   }
 }
 
-async function getMovieDetails(movieUrl
+async function getMovieDetails(movie){
+  return new Promise(async (resolve) => {
+    try{
+      let html = await request(movie.url);
+      const $ = cheerio.load(html);
+      
+      let details = {};
+      
+      $('.info-list').children('li').slice(0, 1).children('a').each(function(index,
+      details.thumbnail = 
+    }catch(error){
+      return null;
+    }
+  });
+}
 
 async function getMovies() {
     let date = new Date()
