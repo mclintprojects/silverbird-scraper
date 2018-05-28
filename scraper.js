@@ -8,7 +8,7 @@ async function getMovie(id){
   if(response.success){
     let movie = response.movies[id - 1];
     if(!movie.details){
-      let details = await getMovieDetails(movie.url);
+      let details = await getMovieDetails(movie);
       movie.details = details;
     }
     
@@ -26,10 +26,17 @@ async function getMovieDetails(movie){
       
       let details = {};
       
-      $('.info-list').children('li').slice(0, 1).children('a').each(function(index,
-      details.thumbnail = 
+      let infolis
+      details.director = 
+      
+      details.cast = []
+      infolist.slice(0, 1).children('span').children('a').each(function(index, element){
+        details.cast.push(element.children[0].data);
+      });
+      
+      resolve(details);
     }catch(error){
-      return null;
+      resolve(null);
     }
   });
 }
