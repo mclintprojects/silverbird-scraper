@@ -6,8 +6,10 @@ var cache = {}
 async function getMovie(id){
   let response = await getMovies();
   if(response.success){
-    let movie = response.movies[id - 1];
-    if(!movie.details){
+    let movie = response.movies.find(movie => {return movie.id == id});
+    console.log(movie, response.movies);
+    
+    if(movie && !movie.details){
       let details = await getMovieDetails(movie);
       movie.details = details;
     }
