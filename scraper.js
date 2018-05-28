@@ -7,7 +7,6 @@ async function getMovie(id){
   let response = await getMovies();
   if(response.success){
     let movie = response.movies.find(movie => {return movie.id == id});
-    console.log(movie, response.movies);
     
     if(movie && !movie.details){
       let details = await getMovieDetails(movie);
@@ -30,7 +29,7 @@ async function getMovieDetails(movie){
       
       details.synopsis = $('.entry-content').children('p').first().text();
       let infolist = $('.info-list').children('li');
-      details.director = infolist.slice(1, 2).children('span').text();
+      details.director = infolist.eq(1).children('span').text();
       
       details.cast = []
       infolist.first().children('span').children('a').each(function(index, element){
@@ -91,6 +90,7 @@ async function scrapeMovies() {
 
             let content = $(this).children('.entry-content');
             movie.title = content.children('.entry-title').children('a').text();
+            movie.rating = content.children('.entry-rating').children
             movie.url = content.children('.entry-title').children('a').attr('href');
             movie.length = content.children('.entry.date').text();
             movie.showtime = `${content.children('.cinema_page_showtime').children('span').children('strong').text()}${content.children('.cinema_page_showtime').children('strong').text()}`;
