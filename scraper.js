@@ -6,11 +6,20 @@ var cache = {}
 async function getMovie(id){
   let response = await getMovies();
   if(response.success){
-    return response.movies.find(element => element.id === id);
+    let movie = response.movies[id - 1];
+    if(movie.details){
+      return movie.details;
+    }else{
+      let details = await getMovieDetails(movie.url);
+      movie.details = details;
+      return details;
+    }
   }else{
     return null;
   }
 }
+
+async function getMovieDetails(movieUrl
 
 async function getMovies() {
     let date = new Date()

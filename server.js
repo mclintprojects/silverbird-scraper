@@ -18,11 +18,14 @@ app.get('/movies', async function(request, response) {
 });
 
 app.get('/movies/:id', async function(request, response){
-  let movie = await scraper.getMovie(request.query.id);
-  if(movie){
+  let id = request.params.id;
+  
+  let movie = await scraper.getMovie(id);
+  if(movie != null){
     response.send({movie});
   }else{
-    response.status(404).send(
+    response.status(404).send({error: `Could not find a movie with ID: ${id}`});
+  }
 });
 
 var listener = app.listen(process.env.PORT, function() {
