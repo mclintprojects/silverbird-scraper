@@ -15,7 +15,15 @@ app.get('/movies', async function(req, response){
     
     $('.entry-item').each(function(index, element){
       let movie = {};
-      movie.thumbnail = $(this).children('.entry-thumb img').attr('src')
+      
+      movie.id = index + 1
+      movie.thumbnail = $(this).children('.entry-thumb').children('img').attr('src');
+      
+      let content = $(this).children('.entry-content');
+      movie.title = content.children('.entry-title').children('a').text();
+      movie.url = content.children('.entry-title').children('a').attr('href');
+      movie.length = content.children('.entry.date').text();
+      movie.showtime = `${content.children('.cinema_page_showtime').children('span').children('strong').text()} ${content.children('.cinema_page_showtime').children('strong').text()}`;
       
       movies.push(movie)
     });
