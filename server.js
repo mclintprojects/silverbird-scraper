@@ -22,7 +22,7 @@ app.get('/movies', async function(req, response) {
 });
 
 async function getMovies() {
-    let date = Date()
+    let date = new Date()
     let cacheId = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}`
 
     let cacheContent = cache[cacheId];
@@ -33,7 +33,7 @@ async function getMovies() {
         };
     } else {
         let movies = await scrapeMovies();
-        if (movies != null) {
+        if (movies.length > 0) {
             cache[cacheId] = movies
             return {
                 success: true,
@@ -48,6 +48,7 @@ async function getMovies() {
 }
 
 async function scrapeMovies() {
+  return new Promise(async (resolve) => {
     try {
         let html = await request(url);
         const $ = cheerio.load(html);
@@ -68,19 +69,21 @@ async function scrapeMovies() {
             let description = content.children('.desc-mv');
             movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
 
-            movie.genres = [];
+            /*movie.genres = [];
             description.children('.note').children('a').each(function(index, element) {
                 movie.genres.push(element.children[0].data)
-            });
+            });*/
 
             movies.push(movie)
         });
 
-        return movies;
+        resolve(movies);
 
     } catch (error) {
-        return null;
+      console.log(error);
+        resolve([])
     }
+  });
 }
 
 var listener = app.listen(process.env.PORT, function() {
