@@ -26,7 +26,7 @@ async function getMovieDetails(movie){
       
       let details = {};
       
-      //details.synopsis = $('.entry-content').children('p').slice(0, 1).text();
+      details.synopsis = $('.entry-content').children('p').first().text();
       let infolist = $('.info-list').children('li');
       details.director = infolist.slice(1, 2).children('span').text();
       
@@ -37,11 +37,12 @@ async function getMovieDetails(movie){
       
       details.cinemas = []
       infolist.last().children('a').each(function(index, element){
-        details.cinema.push(element.children[0].data);
+        details.cinemas.push(element.children[0].data);
       });
       
       resolve(details);
     }catch(error){
+      console.log(error);
       resolve(null);
     }
   });
