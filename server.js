@@ -23,7 +23,10 @@ app.get('/movies', async function(req, response){
       movie.title = content.children('.entry-title').children('a').text();
       movie.url = content.children('.entry-title').children('a').attr('href');
       movie.length = content.children('.entry.date').text();
-      movie.showtime = `${content.children('.cinema_page_showtime').children('span').children('strong').text()} ${content.children('.cinema_page_showtime').children('strong').text()}`;
+      movie.showtime = `${content.children('.cinema_page_showtime').children('span').children('strong').text()}${content.children('.cinema_page_showtime').children('strong').text()}`;
+      
+      let description = content.children('.desc-mv');
+      movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
       
       movies.push(movie)
     });
