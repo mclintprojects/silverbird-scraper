@@ -45,7 +45,7 @@ export default {
 <style>
 #movies {
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 24px;
 }
 
 #movies li {

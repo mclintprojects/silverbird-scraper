@@ -52,10 +52,16 @@ body {
 	align-items: center;
 }
 
-@media screen and (max-width: 576px), (max-width: 768px) {
+@media screen and (max-width: 576px) {
 	#app {
 		width: 100%;
 		padding: 16px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	#app {
+		width: 60%;
 	}
 }
 </style>

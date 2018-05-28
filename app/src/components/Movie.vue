@@ -76,7 +76,7 @@ export default {
 	margin-left: 8px;
 }
 
-@media screen and (max-width: 576px), (max-width: 768px) {
+@media screen and (max-width: 576px), (min-width: 768px) {
 	.movie-title {
 		font-size: 18px;
 	}
