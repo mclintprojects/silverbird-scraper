@@ -4,11 +4,28 @@ var cors = require('cors')
 var cheerio = require('cheerio')
 var app = express();
 var url = 'https://silverbirdcinemas.com/cinema/accra/';
+var cache = []
 
 app.use(cors())
 
 app.get('/movies', async function(req, response){
   try{
+    let movies = getMovies()
+    response.send({movies});
+  }
+  catch(error){
+    response.status(500).send({error});
+  }
+});
+
+function getMovies(){
+  let date = Date()
+  let cacheId = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}`
+  
+  if()
+}
+
+async function scrapeMovies(){
     let html = await request(url);
     const $ = cheerio.load(html);
     let movies = [];
@@ -30,18 +47,14 @@ app.get('/movies', async function(req, response){
       
       movie.genres = [];
       description.children('.note').children('a').each(function(index, element){
-        console.log(element)
+        movie.genres.push(element.children[0].data)
       });
       
       movies.push(movie)
     });
-    
-    response.send({movies});
-  }
-  catch(error){
-    response.status(500).send({error});
-  }
-});
+  
+  return movies;
+}
 
 var listener = app.listen(process.env.PORT, function () {
   console.log('App is listening on port ' + listener.address().port);
