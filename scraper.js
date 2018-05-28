@@ -2,7 +2,9 @@ var request = require('request-promise')
 var cheerio = require('cheerio')
 
 const url = 'https://silverbirdcinemas.com/cinema/accra/';
-var cache = {} // silverbird listings don't change much so we can cache scrapings (expire: 1 day) to speedup consequent requests
+
+// silverbird listings don't change much so we can cache scrapings (expire: 1 day) to speedup consequent requests
+var cache = {}
 
 async function getMovie(id) {
     let response = await getMovies();
@@ -23,7 +25,7 @@ async function getMovie(id) {
     }
 }
 
-// Scrapes a movie's detail page for its cast, director, synpo
+// Scrapes a movie's detail page for its cast, director, and synopsis
 async function getMovieDetails(movie) {
     return new Promise(async (resolve) => {
         try {
@@ -42,11 +44,6 @@ async function getMovieDetails(movie) {
                 details.cast.push(element.children[0].data);
             });
 
-            details.cinemas = []
-            infolist.last().children('a').each(function(index, element) {
-                details.cinemas.push(element.children[0].data);
-            });
-
             resolve(details);
         } catch (error) {
             resolve(null);
@@ -55,8 +52,8 @@ async function getMovieDetails(movie) {
 }
 
 async function getMovies() {
-    let date = new Date()
-    let cacheId = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}`
+    let date = new Date();
+    let cacheId = `${date.getFullYear()}_${date.getMonth()}_${date.getDate()}`;
 
     let cacheContent = cache[cacheId];
     if (cacheContent) {
@@ -80,6 +77,7 @@ async function getMovies() {
     }
 }
 
+// Gets the list of movies from the Silverbird Cinema Accra homepage
 async function scrapeMovies() {
     return new Promise(async (resolve) => {
         try {
