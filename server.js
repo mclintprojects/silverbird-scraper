@@ -9,7 +9,7 @@ var cache = {}
 app.use(cors())
 
 app.get('/movies', async function(req, response) {
-    let getMoviesResponse = getMovies()
+    let getMoviesResponse = await getMovies()
     if (getMoviesResponse.success) {
         response.send({
             movies: getMoviesResponse.movies
@@ -69,10 +69,10 @@ async function scrapeMovies() {
             let description = content.children('.desc-mv');
             movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
 
-            /*movie.genres = [];
+            movie.genres = [];
             description.children('.note').children('a').each(function(index, element) {
                 movie.genres.push(element.children[0].data)
-            });*/
+            });
 
             movies.push(movie)
         });
@@ -80,7 +80,6 @@ async function scrapeMovies() {
         resolve(movies);
 
     } catch (error) {
-      console.log(error);
         resolve([])
     }
   });
