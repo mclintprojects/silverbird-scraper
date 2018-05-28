@@ -29,9 +29,11 @@ app.get('/movies', async function(req, response){
       movie.release = description.children('div').slice(0, 1).text().replace('Release:', '');
       
       movie.genres = [];
-      let genres = description.children('.note').children('a').forEach(function(elem){
-        movie.genres.push(elem.text());
-      });
+      /*Object.values(description.children('.note').children('a')).forEach(element => {
+        console.log(element);
+        //movie.genres.push(element.text());
+      });*/
+      console.log(Object.values(description.children('.note').children('a'))[0].text())
       
       movies.push(movie)
     });
