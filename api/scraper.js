@@ -34,13 +34,14 @@ async function getMovieDetails(movie) {
 
             let details = {};
 
+            details.header = $('#amy-page-header').children('img').attr('src');
             details.synopsis = $('.entry-content').children('p').first().text();
-          
+
             let infolist = $('.info-list').children('li');
             details.director = infolist.eq(1).children('span').text();
 
             details.cast = []
-            infolist.first().children('span').children('a').each(function(index, element) {
+            infolist.first().children('span').children('a').each(function (index, element) {
                 details.cast.push(element.children[0].data);
             });
 
@@ -85,7 +86,7 @@ async function scrapeMovies() {
             const $ = cheerio.load(html);
             let movies = [];
 
-            $('.entry-item').each(function(index, element) {
+            $('.entry-item').each(function (index, element) {
                 let movie = {};
 
                 movie.id = index + 1
@@ -102,7 +103,7 @@ async function scrapeMovies() {
                 movie.release = description.children('div').first().text().replace('Release:', '');
 
                 movie.genres = [];
-                description.children('.note').children('a').each(function(index, element) {
+                description.children('.note').children('a').each(function (index, element) {
                     movie.genres.push(element.children[0].data)
                 });
 
