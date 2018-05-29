@@ -111,7 +111,7 @@ export default {
 #btn-navigate-up {
 	width: 36px;
 	height: 36px;
-	background: var(--accentColor);
+	background: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
 	position: relative;
 	top: 16px;
@@ -120,7 +120,7 @@ export default {
 
 #btn-navigate-up:hover {
 	cursor: pointer;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgb(86, 214, 182);
 }
 
 @media screen and (max-width: 576px) {
@@ -135,6 +135,7 @@ export default {
 
 	#app {
 		padding: 0px;
+		background: white;
 	}
 }
 </style>
