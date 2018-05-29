@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+	  <keep-alive>
+    	<router-view/>
+	  </keep-alive>
   </div>
 </template>
 
@@ -11,6 +13,12 @@ export default {
 </script>
 
 <style>
+:root {
+	--primaryColor: #eeeeee;
+	--accentColor: rgba(0, 0, 0, 0.3);
+	--primaryColorLight: white;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -20,18 +28,26 @@ export default {
 	font-family: 'Rubik', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	width: 60%;
+	width: 50%;
 	margin: 0 auto;
 	padding: 24px;
 	color: rgba(0, 0, 0, 0.8);
 }
 
 body {
-	background-color: #cfd6d8;
+	background-color: var(--primaryColor);
+}
+
+.text-primary-light {
+	color: rgba(0, 0, 0, 0.54);
 }
 
 .text-secondary {
-	color: rgba(0, 0, 0, 0.54);
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.text-secondary-light {
+	color: rgba(255, 255, 255, 0.54);
 }
 
 .flex-column {

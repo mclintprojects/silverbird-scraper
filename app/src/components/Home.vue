@@ -2,7 +2,7 @@
     <div>
         <loader :isLoading="isLoading" />
 		<h1>Now showing</h1>
-		<p class="text-secondary">Silverbird Cinemas, Accra</p>
+		<p class="text-primary-light">Silverbird Cinemas, Accra</p>
 
 		<ul id="movies">
 			<li v-for="(movie, index) in movies" :key="index">
