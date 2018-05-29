@@ -1,21 +1,11 @@
-# app
+# silverbird-scraper frontend
 
-> A Vue.js project
+> A Vue.js project that lists the movies showing at the Silverbird Cinema, Accra. Powered by the API built by me at https://silverbird-scraper.glitch.me/
 
-## Build Setup
+Live demo: https://silverbird-scraper.netlify.com
 
-``` bash
-# install dependencies
-npm install
+# Running the project
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+1.  Clone the project to your computer
+2.  Navigate to the root folder of your local clone of this repository, open cmd and run `cd app && npm install && npm run dev` in cmd
+3.  The application should now be running at http://localhost:8080
