@@ -66,6 +66,11 @@ export default {
 </script>
 
 <style>
+#movie-details {
+	background: white;
+	height: 100vh;
+}
+
 #movie-header {
 	height: 350px;
 	background-position: center;
@@ -86,7 +91,6 @@ export default {
 }
 
 #movie-details-body {
-	background: white;
 	padding: 16px;
 }
 

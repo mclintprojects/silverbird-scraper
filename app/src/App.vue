@@ -28,7 +28,7 @@ export default {
 	font-family: 'Rubik', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 24px;
 	color: rgba(0, 0, 0, 0.8);

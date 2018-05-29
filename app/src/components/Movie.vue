@@ -126,7 +126,7 @@ export default {
 
 	.movie {
 		flex-direction: column;
-		width: calc(100% - 32px);
+		border-radius: 0px;
 	}
 
 	.icon {
