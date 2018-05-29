@@ -63,7 +63,7 @@ export default {
 }
 
 .movie-content {
-	width: 100%;
+	width: calc(100% - 32px);
 	margin: 16px;
 }
 
@@ -100,10 +100,6 @@ export default {
 @media screen and (max-width: 576px) {
 	.movie-title {
 		font-size: 18px;
-	}
-
-	.movie-content {
-		margin-right: 16px;
 	}
 
 	.thumbnail {
