@@ -63,6 +63,10 @@ async function getMovies() {
             movies: cacheContent
         };
     } else {
+        // scraping does not exist in cache meaning a new day has started and the website hasn't been scraped yet
+        // or the app is running for the first time. either way we need to purge the cache of any old entries
+        this.cache = {};
+
         let movies = await scrapeMovies();
         if (movies.length > 0) {
             cache[cacheId] = movies
