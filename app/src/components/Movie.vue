@@ -17,7 +17,7 @@
                 <img class="icon" src="https://res.cloudinary.com/mclint-cdn/image/upload/v1527549057/twotone-timelapse-24px.svg" />
                 <p class="movie-showtime text-primary-light">{{movie.length}}</p>
             </div>
-            <div class="flex-row"><p class=movie-rating>Rating: {{movie.rating.length === 0 ? '0.0' : movie.rating}} <span  class="text-primary-light"> / 5</span></p></div>
+            <div class="flex-row"><p class="movie-rating">Rating: {{movie.rating.length === 0 ? '0.0' : movie.rating}} <span class="text-primary-light"> / 5</span></p></div>
         </div>
     </div>
 </template>
