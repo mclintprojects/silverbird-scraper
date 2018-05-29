@@ -49,7 +49,7 @@ export default {
 }
 
 #movies li {
-	margin-bottom: 16px;
+	margin-bottom: 24px;
 	list-style-type: none;
 }
 </style>

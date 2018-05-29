@@ -65,10 +65,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #movie-details {
 	background: white;
-	height: 100vh;
+	border-radius: 16px 16px 0px 0px;
 }
 
 #movie-header {

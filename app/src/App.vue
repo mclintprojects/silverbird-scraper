@@ -71,7 +71,7 @@ body {
 @media screen and (max-width: 576px) {
 	#app {
 		width: 100%;
-		padding: 16px;
+		padding: 0px;
 	}
 }
 </style>
